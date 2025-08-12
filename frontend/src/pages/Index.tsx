@@ -22,7 +22,8 @@ interface Conversation {
   messages: Message[];
 }
 
-const API_BASE_URL = 'http://localhost:8000';
+// const API_BASE_URL = 'http://localhost:8000' 
+const API_BASE_URL = 'https://psycho-nu.vercel.app'
 
 export default function Index() {
   const [conversations, setConversations] = useState<Conversation[]>([
