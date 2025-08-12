@@ -3,6 +3,6 @@ const { addFile } = require('../controllers/fileControllers');
 const { getAnswer } = require('../controllers/queryControllers');
 const router = express.Router();
 
-router.get('/' , getAnswer);
+router.post('/' , getAnswer);
 
 module.exports = router;

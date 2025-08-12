@@ -1,8 +1,12 @@
 const { configDotenv } = require('dotenv');
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
+// Load environment variables
 
 app.use(express.json());
+app.use(cors());
 configDotenv();
 
 app.get("/", (req, res) => {
