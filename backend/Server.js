@@ -6,7 +6,7 @@ const cors = require('cors');
 // Load environment variables
 
 const corsOptions = {
-  origin: ["http://localhost:8080" , "https://psycho-nu.vercel.app/" , "https://psycho-weml.vercel.app/"],
+  origin: ["http://localhost:8080" , "https://psycho-nu.vercel.app" , "https://psycho-weml.vercel.app"],
 
 };
 
