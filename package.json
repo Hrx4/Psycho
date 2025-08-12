@@ -1,0 +1,26 @@
+{
+  "name": "psycho",
+  "version": "1.0.0",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/genai": "^1.12.0",
+    "@langchain/core": "^0.3.66",
+    "@langchain/google-genai": "^0.2.16",
+    "@langchain/google-vertexai": "^0.2.16",
+    "@langchain/textsplitters": "^0.1.0",
+    "@pinecone-database/pinecone": "^6.1.2",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "nodemon": "^3.1.10",
+    "ollama": "^0.5.17",
+    "pdf-parse": "^1.1.1"
+  }
+}
