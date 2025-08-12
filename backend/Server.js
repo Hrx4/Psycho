@@ -5,8 +5,13 @@ const cors = require('cors');
 
 // Load environment variables
 
+const corsOptions = {
+  origin: ["http://localhost:8080" , "https://psycho-nu.vercel.app/"], 
+
+};
+
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 configDotenv();
 
 app.get("/", (req, res) => {
