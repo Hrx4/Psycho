@@ -3,7 +3,6 @@ const fs = require('fs');
 const pdf = require('pdf-parse');
 const chunkText = require('../utils/chunkText');
 const getEmbeddings = require('../utils/getEmbeddings');
-const pc = require('../utils/pinecone');
 const pineconeIndex = require('../utils/pinecone');
 
 

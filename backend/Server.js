@@ -5,25 +5,49 @@ const cors = require('cors');
 
 // Load environment variables
 
-const corsOptions = {
-  origin: ["http://localhost:8080" , "https://psycho-nu.vercel.app" , "https://psycho-weml.vercel.app"],
+// const allowedOrigins = [
+//   'http://localhost:8080',                 // Local dev
+//   'https://psycho-weml.vercel.app'       // Deployed frontend
+// ];
+// {
+//  origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true); // Allow request
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },    credentials: false , 
+//     preflightContinue: false,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization']
+//   }
 
-};
+app.use(cors());
+
+// app.options('*', cors()); // handle preflight
+
+// app.use((req, res, next) => {
+//   if (req.method === 'OPTIONS') {
+//     return res.sendStatus(200);
+//   }
+//   next();
+// });
 
 app.use(express.json());
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions))
 configDotenv();
 
+
+// ✅ Handle OPTIONS preflight for all routes
+const PORT = process.env.PORT || 3000;
+
 app.get("/", (req, res) => {
-  res.send("Hello, World! This is my Express server!");
+  res.send(`Hello, World! This is my Express server!${PORT}`);
 });
 
 app.use('/files', require('./routes/fileRouters'));
 app.use('/query', require('./routes/queryRoutes'));
 
 
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

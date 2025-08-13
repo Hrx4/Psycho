@@ -6,6 +6,7 @@ import { TypingIndicator } from "@/components/TypingIndicator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Plus } from "lucide-react";
+import axios from "axios";
 
 interface Message {
   id: string;
@@ -23,7 +24,8 @@ interface Conversation {
 }
 
 // const API_BASE_URL = 'http://localhost:8000' 
-const API_BASE_URL = 'https://psycho-nu.vercel.app'
+// const API_BASE_URL = 'https://psycho-nu.vercel.app'
+const API_BASE_URL =  'https://backend-pied-three.vercel.app'
 
 export default function Index() {
   const [conversations, setConversations] = useState<Conversation[]>([
@@ -86,7 +88,7 @@ export default function Index() {
 
     // Simulate AI response delay
     try {
-      const response = await fetch(`${API_BASE_URL}/query`, {
+    const response = await fetch(`${API_BASE_URL}/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -159,6 +161,7 @@ export default function Index() {
         );
       }
     } catch (error) {
+      console.log("Error fetching AI response:", error);
       setIsTyping(false);
       
       // Add error message

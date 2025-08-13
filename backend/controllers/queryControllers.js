@@ -3,6 +3,7 @@ const pineconeIndex = require('../utils/pinecone');
 const getEmbeddings = require('../utils/getEmbeddings');
 const PROMPT = require('../utils/prompt');
 const {GoogleGenAI} = require('@google/genai');
+const { text } = require('express');
 
 const getAnswer = asyncHandler(async(req , res)=>{
 
@@ -16,16 +17,19 @@ res.setHeader('Connection', 'keep-alive');
 
     const namespace = await pineconeIndex.namespace('__default__')
 
-    const getQueryEmbeddings = await getEmbeddings(query);
+    // const getQueryEmbeddings = await getEmbeddings(query);
 
-    const answer = await namespace.query({
-       vector: getQueryEmbeddings,
-       topK: 5,
-       includeMetadata: true,
+    const answer = await namespace.searchRecords({
+       query:{
+        topK: 5,
+        inputs:{
+            text: query
+        }
+       }
 
     })
 
-    const context = answer.matches.map((item , index)=>( item.metadata.text)).join('\n\n');
+    const context = answer.result.hits.map((item , index)=>( item.fields.text)).join('\n\n');
 
     const questionPrompt = PROMPT(context  , query);
 
