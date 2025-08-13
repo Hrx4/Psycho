@@ -25,7 +25,7 @@ interface Conversation {
 
 // const API_BASE_URL = 'http://localhost:8000' 
 // const API_BASE_URL = 'https://psycho-nu.vercel.app'
-const API_BASE_URL =  'https://backend-pied-three.vercel.app'
+const API_BASE_URL =  'https://backend-two-iota-39.vercel.app'
 
 export default function Index() {
   const [conversations, setConversations] = useState<Conversation[]>([
